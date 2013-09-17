@@ -7,12 +7,18 @@ and is ready for use in both modern browsers and Node.js servers.
 
 ## Usage
 
+```js
 var GoCoin = require('gocoin');
 var client = new GoCoin.Client({
   client_id: '...',
   client_secret: '...',
   ...
-})
+});
+
+client.user.create({...}, function(){
+  console.log("User created.");
+});
+```
 
 ## Methods
 
