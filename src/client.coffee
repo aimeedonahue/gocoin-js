@@ -17,23 +17,40 @@ class Client
     path: '/api'
     api_version: 'v1'
     secure: true
-    headers: {}
-    grant_type: "password"
-    scope: ""
+    method: 'GET'
 
   default_headers:
-    'x-something-else': 'test'
+    'Content-Type': 'application/json'
 
   constructor: (options={}) ->
     console.log "Client::constructor called."
     @options = _.defaults options, @defaults
+    @headers = if options.headers? then options.headers else _.defaults {}, @default_headers
     console.log "Using options: #{@options}"
+
     @auth = new Auth(@)
-    @token = @authenticate options, (res) -> console.log res
+    self = @
+    @authenticate options, (response) -> 
+      response_data = ''
+      response.on 'data', (chunk) ->
+        response_data += chunk
+      response.on 'end', () ->
+        self.token = JSON.parse(response_data).access_token
+        console.log self.token
+
     @api = new Api(@)
     @user = @api.user
     @merchant = @api.merchant
 
+
+  test: () ->
+    @user.self (response) ->
+      response_data = ''
+      response.on 'data', (chunk) ->
+        response_data += chunk
+      response.on 'end', () ->
+        me = JSON.parse(response_data).access_token
+        console.log me
   # Parses options to determine what kind of authentication is requested and
   # obtains an access token.
   #
@@ -51,6 +68,14 @@ class Client
       443
     else
       80
+
+  # Get a config'd var
+  config: (which) ->
+    if @options[which]?
+      console.log @options[which]
+      @options[which]
+    else
+      null
 
   # Make an HTTP request to the API.
   # Config contains: host, path, port, method, headers, and body.

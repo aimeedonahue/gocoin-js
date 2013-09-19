@@ -8,8 +8,8 @@ class Auth
     console.log "Auth constructor called."
 
   required_password_params: ['grant_type', 'client_id', 'client_secret',
-                              'username', 'password']
-  required_client_params: ['grant_type', 'client_id', 'client_secret',
+                              'username', 'password', 'scope']
+  required_code_params: ['grant_type', 'client_id', 'client_secret',
                             'code', 'redirect_uri']
 
   # Gets a user token.
@@ -23,21 +23,26 @@ class Auth
   #
   authenticate: (options, callback) ->
     console.log "Auth::authenticate called."
-
+    headers = if options.headers? then _.defaults(options.headers, @client.headers) else _.defaults {}, @client.headers
     options = _.defaults options, @client.options
+
     console.log options
+    console.log headers
+
     required = switch options.grant_type
       when 'password' then @required_password_params
-      when 'client_credentials' then @required_client_params
+      when 'authorization_code' then @required_client_params
 
     console.log "Required params: #{required}"
     body = JSON.stringify @build_body(options, required)
 
-    # Validation
+    #Configure Request
     config =
+      host: options.host
       path: "/oauth/token"
       method: "POST"
-      headers: { 'Content-Type': 'application/json' }
+      port: @client.port()
+      headers: headers
       body: body
 
     @client.raw_request(config, callback)

@@ -25,8 +25,11 @@ class User
     console.log "User::update called."
     @api.request()
 
-  self: () ->
+  self: (callback) ->
     console.log "User::self called."
-    @api.request()
+    route = '/user'
+    options = {}
+
+    @api.request(route, options, callback)
 
 module.exports = User
