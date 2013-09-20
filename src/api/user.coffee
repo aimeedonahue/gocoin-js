@@ -29,7 +29,6 @@ class User
     console.log "User::self called."
     route = '/user'
     options = {}
-
-    @api.request(route, options, callback)
+    @api.request(route, options, @api.handler(callback))
 
 module.exports = User

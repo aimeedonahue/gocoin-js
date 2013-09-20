@@ -22,41 +22,29 @@ class Client
   default_headers:
     'Content-Type': 'application/json'
 
-  constructor: (options={}) ->
+  constructor: (options={}, callback) ->
     console.log "Client::constructor called."
     @options = _.defaults options, @defaults
     @headers = if options.headers? then options.headers else _.defaults {}, @default_headers
     console.log "Using options: #{@options}"
 
     @auth = new Auth(@)
-    self = @
-    @authenticate options, (response) -> 
-      response_data = ''
-      response.on 'data', (chunk) ->
-        response_data += chunk
-      response.on 'end', () ->
-        self.token = JSON.parse(response_data).access_token
-        console.log self.token
-
     @api = new Api(@)
     @user = @api.user
     @merchant = @api.merchant
 
+    self = @
+    @authenticate options, callback
 
-  test: () ->
-    @user.self (response) ->
-      response_data = ''
-      response.on 'data', (chunk) ->
-        response_data += chunk
-      response.on 'end', () ->
-        me = JSON.parse(response_data).access_token
-        console.log me
+  set_token: (@token) ->
+  get_token: () ->
+    @token 
   # Parses options to determine what kind of authentication is requested and
   # obtains an access token.
   #
   authenticate: (options, callback) ->
     console.log "Client::authenticate called."
-    @auth.authenticate(options, callback)
+    @auth.authenticate options, @api.handler(callback)
 
   request_client: (secure=true) ->
     if secure then https else http
@@ -69,18 +57,11 @@ class Client
     else
       80
 
-  # Get a config'd var
-  config: (which) ->
-    if @options[which]?
-      console.log @options[which]
-      @options[which]
-    else
-      null
-
   # Make an HTTP request to the API.
   # Config contains: host, path, port, method, headers, and body.
   #
   raw_request: (config, callback) ->
+
     console.log "Raw request logged."
 
     # Add content length.
@@ -94,7 +75,8 @@ class Client
       callback(err)
     if config.body
       request.write config.body
-    request.end
+
+    request.end()
 
 
 module.exports = Client

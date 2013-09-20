@@ -26,9 +26,6 @@ class Auth
     headers = if options.headers? then _.defaults(options.headers, @client.headers) else _.defaults {}, @client.headers
     options = _.defaults options, @client.options
 
-    console.log options
-    console.log headers
-
     required = switch options.grant_type
       when 'password' then @required_password_params
       when 'authorization_code' then @required_client_params
@@ -52,7 +49,6 @@ class Auth
   #
   build_body: (options, required) ->
     _.reduce required, ((m, k) ->
-      console.log "Checking param: #{k}"
       throw new Error "Authenticate requires '#{k}' option." unless options[k]
       m[k] = options[k]
       return m

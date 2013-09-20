@@ -12,10 +12,22 @@ class Api
     @user = new User(@)
     @merchant = new Merchant(@)
 
+  handler: (callback) ->
+      (
+        (response) -> 
+          console.log "Status: #{response.statusCode}"
+          response_data = ''
+          response.on 'data', (chunk) ->
+            response_data += chunk
+          response.on 'end', () ->
+            data = JSON.parse(response_data);
+            console.log response_data
+            callback(response, data)
+        )
+
   request: (route, options, callback) ->
     # Do stuff.
     console.log "Api::request called."
-    console.log (@client.token)
     unless @client.token 
       throw new Error 'Api is not ready'
 
@@ -28,12 +40,12 @@ class Api
     #Configure Request
     config =
       host: options.host
-      path: "#{options.path}#{options.api_version}#{route}"
+      path: "#{options.path}/#{options.api_version}#{route}"
       method: options.method
       port: @client.port()
       headers: headers
       body: body
 
-    @client.raw_request(config, callback)
+    @client.raw_request config, callback
 
 module.exports = Api
