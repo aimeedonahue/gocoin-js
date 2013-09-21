@@ -23,12 +23,17 @@ class Auth
   #
   authenticate: (options, callback) ->
     console.log "Auth::authenticate called."
+    if _.isFunction(options)
+      callback = options
+      options = {}
+    throw new Error 'Authenticate: callback was not defined' unless callback? 
     headers = if options.headers? then _.defaults(options.headers, @client.headers) else _.defaults {}, @client.headers
     options = _.defaults options, @client.options
 
     required = switch options.grant_type
       when 'password' then @required_password_params
-      when 'authorization_code' then @required_client_params
+      when 'authorization_code' then @required_code_params
+      else throw new Error 'Authenticate: grant_type was not defined properly'
 
     console.log "Required params: #{required}"
     body = JSON.stringify @build_body(options, required)

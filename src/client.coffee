@@ -22,7 +22,7 @@ class Client
   default_headers:
     'Content-Type': 'application/json'
 
-  constructor: (options={}, callback) ->
+  constructor: (options={}) ->
     console.log "Client::constructor called."
     @options = _.defaults options, @defaults
     @headers = if options.headers? then options.headers else _.defaults {}, @default_headers
@@ -32,9 +32,7 @@ class Client
     @api = new Api(@)
     @user = @api.user
     @merchant = @api.merchant
-
-    self = @
-    @authenticate options, callback
+    @apps = @api.apps
 
   set_token: (@token) ->
   get_token: () ->

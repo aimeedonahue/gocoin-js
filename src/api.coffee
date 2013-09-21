@@ -2,6 +2,7 @@ _ = require 'underscore'
 
 Merchant = require './api/merchant'
 User     = require './api/user'
+Apps      = require './api/apps'
 
 # The API interface for working with GoCoin resources.
 #
@@ -11,6 +12,7 @@ class Api
     console.log "Api::constructor called."
     @user = new User(@)
     @merchant = new Merchant(@)
+    @apps = new Apps(@)
 
   handler: (callback) ->
       (
@@ -28,8 +30,13 @@ class Api
   request: (route, options, callback) ->
     # Do stuff.
     console.log "Api::request called."
-    unless @client.token 
-      throw new Error 'Api is not ready'
+    throw new Error 'Api Request: Route was not defined' unless route? && _.isString(route)
+    if _.isFunction(options)
+      callback = options
+      options = {}
+    throw new Error 'Api Request: Options is not an object' unless _.isObject(options)
+    throw new Error 'Api Request: Callback is not defined' unless callback? && _.isFunction(callback)  
+    throw new Error 'Api not ready: Token was not defined' unless @client.token 
 
     headers = if options.headers? then _.defaults(options.headers, @client.headers) else _.defaults {}, @client.headers
     headers['Authorization'] = "Bearer #{@client.token}"
