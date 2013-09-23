@@ -42,6 +42,10 @@ class Client
   #
   authenticate: (options, callback) ->
     console.log "Client::authenticate called."
+    if _.isFunction(options)
+      callback = options
+      options = {}
+      
     @auth.authenticate options, @api.handler(callback)
 
   request_client: (secure=true) ->

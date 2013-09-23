@@ -5,7 +5,7 @@ class User
   constructor: (@api) ->
     console.log "User::constructor called."
 
-  create: (user_data, callback) ->
+  create: (params, callback) ->
     console.log "User::create called."
     route = '/api/v1/users';
     options = 
@@ -31,12 +31,12 @@ class User
     options = {}
     @api.request(route, options, @api.handler(callback))
     
-  update: (opts, callback) ->
+  update: (params, callback) ->
     console.log "User::update called."
-    route = "/api/v1/users/#{opts.id}"
+    route = "/api/v1/users/#{params.id}"
     options =
       method: 'PATCH'
-      body: opts.data
+      body: params.data
     @api.request(route, options, @api.handler(callback))
     
   self: (callback) ->

@@ -5,12 +5,12 @@ class Merchant
   constructor: (@api) ->
     console.log "Merchant::constructor called."
 
-  create: (merchant_data, callback) ->
+  create: (params, callback) ->
     console.log "Merchant::create called."
     route = '/api/v1/merchants'
     options = 
       method: 'POST'
-      body: merchant_data
+      body: params
     @api.request(route, options, @api.handler(callback))
 
   delete: (id, callback) ->
@@ -32,12 +32,12 @@ class Merchant
     options = {}
     @api.request(route, options, @api.handler(callback))
 
-  update: (opts, callback) ->
+  update: (params, callback) ->
     console.log "Merchant::update called."
-    route = "/api/v1/merchants/#{opts.id}"
+    route = "/api/v1/merchants/#{params.id}"
     options = 
       method: 'PATCH'
-      body: opts.data
+      body: params.data
     @api.request(route, options, @api.handler(callback))
 
 module.exports = Merchant

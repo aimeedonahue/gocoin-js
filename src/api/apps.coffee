@@ -5,20 +5,20 @@ class Apps
   constructor: (@api) ->
     console.log "Apps::constructor called."
 
-  create: (app_data, callback) ->
+  create: (params, callback) ->
     console.log "Apps::create called."
     route = '/oauth/applications'
     options = 
       method: 'POST'
-      body: app_data
+      body: params
     @api.request(route, options, @api.handler(callback))
 
-  create_code: (auth_data, callback) ->
+  create_code: (params, callback) ->
     console.log "Apps::create_code called."
     route = '/oauth/authorize'
     options =
       method: 'POST'
-      body: auth_data
+      body: params
     @api.request(route, options, @api.handler(callback))
 
   delete: (id, callback) ->
@@ -54,12 +54,12 @@ class Apps
     options = {}
     @api.request(route, options, @api.handler(callback))
 
-  update: (opts, callback) ->
+  update: (params, callback) ->
     console.log "Apps::update called."
-    route = "/oauth/applications/#{opts.id}"
+    route = "/oauth/applications/#{params.id}"
     options = 
       method: 'PATCH'
-      body: opts.data
+      body: params.data
     @api.request(route, options, @api.handler(callback))
 
 module.exports = Apps
