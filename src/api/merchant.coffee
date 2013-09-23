@@ -5,24 +5,39 @@ class Merchant
   constructor: (@api) ->
     console.log "Merchant::constructor called."
 
-  create: () ->
+  create: (params, callback) ->
     console.log "Merchant::create called."
-    @api.request()
+    route = '/api/v1/merchants'
+    options = 
+      method: 'POST'
+      body: params
+    @api.request(route, options, @api.handler(callback))
 
-  delete: () ->
+  delete: (id, callback) ->
     console.log "Merchant::delete called."
-    @api.request()
+    route = "/api/v1/merchants/#{id}"
+    options = 
+      method: 'DELETE'
+    @api.request(route, options, @api.handler(callback))
 
-  get: () ->
+  get: (id, callback) ->
     console.log "Merchant::get called."
-    @api.request()
+    route = "/api/v1/merchants/#{id}"
+    options = {}
+    @api.request(route, options, @api.handler(callback))
 
-  list: () ->
+  list: (callback) ->
     console.log "Merchant::list called."
-    @api.request()
+    route = '/api/v1/merchants'
+    options = {}
+    @api.request(route, options, @api.handler(callback))
 
-  update: () ->
+  update: (params, callback) ->
     console.log "Merchant::update called."
-    @api.request()
+    route = "/api/v1/merchants/#{params.id}"
+    options = 
+      method: 'PATCH'
+      body: params.data
+    @api.request(route, options, @api.handler(callback))
 
 module.exports = Merchant
