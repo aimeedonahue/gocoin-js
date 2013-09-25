@@ -7,7 +7,7 @@ class Merchant
 
   create: (params, callback) ->
     console.log "Merchant::create called."
-    route = '/api/v1/merchants'
+    route = '/merchants'
     options = 
       method: 'POST'
       body: params
@@ -15,26 +15,26 @@ class Merchant
 
   delete: (id, callback) ->
     console.log "Merchant::delete called."
-    route = "/api/v1/merchants/#{id}"
+    route = "/merchants/#{id}"
     options = 
       method: 'DELETE'
     @api.request(route, options, @api.handler(callback))
 
   get: (id, callback) ->
     console.log "Merchant::get called."
-    route = "/api/v1/merchants/#{id}"
+    route = "/merchants/#{id}"
     options = {}
     @api.request(route, options, @api.handler(callback))
 
   list: (callback) ->
     console.log "Merchant::list called."
-    route = '/api/v1/merchants'
+    route = '/merchants'
     options = {}
     @api.request(route, options, @api.handler(callback))
 
   update: (params, callback) ->
     console.log "Merchant::update called."
-    route = "/api/v1/merchants/#{params.id}"
+    route = "/merchants/#{params.id}"
     options = 
       method: 'PATCH'
       body: params.data

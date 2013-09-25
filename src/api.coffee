@@ -42,7 +42,7 @@ class Api
     headers['Authorization'] = "Bearer #{@client.token}"
 
     options = _.defaults options, @client.options
-    body = if options.body? then JSON.stringify(body) else null
+    body = if options.body? then JSON.stringify(options.body) else null
 
     #Configure Request
     config =

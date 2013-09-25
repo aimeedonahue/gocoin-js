@@ -41,7 +41,7 @@ class Auth
     #Configure Request
     config =
       host: options.host
-      path: "/oauth/token"
+      path: "#{options.path}/#{options.api_version}/oauth/token"
       method: "POST"
       port: @client.port()
       headers: headers
