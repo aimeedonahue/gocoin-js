@@ -18,11 +18,10 @@ var client = new GoCoin.Client({
 });
 client.authenticate({options}, function (response, data) {
   client.set_token(data.access_token)
-})
 
-client.user.create({...}, function(){
-  console.log("User created.");
-});
+  client.user.create({...}, function(){
+    console.log("User created.");
+  });
 ```
 
 ## Methods
