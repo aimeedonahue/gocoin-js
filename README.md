@@ -4,6 +4,8 @@ gocoin-js
 A JavaScript client library for the GoCoin API. It is written in CoffeeScript
 and is ready for use in both modern browsers and Node.js servers.
 
+#### NOTICE:
+This code is highly experimental. If you are interested in Gocoin, please contact kevin@gocoin.com
 
 ## Usage
 
