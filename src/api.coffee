@@ -19,7 +19,7 @@ class Api
         (response) -> 
           console.log "Status: #{response.statusCode}"
           response_data = ''
-          if response.statusCode != 204
+          if response.statusCode != 204 and response.statusCode != 302
             response.on 'data', (chunk) ->
               response_data += chunk
             response.on 'end', () ->
