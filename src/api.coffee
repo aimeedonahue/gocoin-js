@@ -19,12 +19,15 @@ class Api
         (response) -> 
           console.log "Status: #{response.statusCode}"
           response_data = ''
-          response.on 'data', (chunk) ->
-            response_data += chunk
-          response.on 'end', () ->
-            data = JSON.parse(response_data);
-            console.log response_data
-            callback(response, data)
+          if response.statusCode != 204
+            response.on 'data', (chunk) ->
+              response_data += chunk
+            response.on 'end', () ->
+              data = JSON.parse(response_data);
+              console.log response_data
+              callback(response, data)
+          else
+            callback response
         )
 
   request: (route, options, callback) ->
