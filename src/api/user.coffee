@@ -33,7 +33,7 @@ class User
     
   update: (params, callback) ->
     console.log "User::update called."
-    route = "/users/#{params.id}"
+    route = "/users/#{params.id}/password"
     options =
       method: 'PATCH'
       body: params.data
@@ -45,4 +45,37 @@ class User
     options = {}
     @api.request(route, options, @api.handler(callback))
 
+  update_password: (params, callback) ->
+    console.log "User::update_password called."
+    route = "/users/#{params.id}/password"
+    options =
+      method: 'PATCH'
+      body: params.data
+    @api.request(route, options, @api.handler(callback))
+
+  #These requests do not require a login (token) and therefore use @client.raw_request
+  request_password_reset: (params, callback) ->
+    console.log "User::request_password_reset called."
+    route = "/users/request_password_reset"
+    config =
+      host: @api.client.options.host
+      path: "#{@api.client.options.path}/#{@api.client.options.api_version}#{route}"
+      method: 'POST'
+      port: @api.client.port()
+      headers: @api.client.headers
+      body: JSON.stringify params.data
+
+    @api.client.raw_request(config, @api.handler(callback))
+  reset_password_with_token: (params, callback) ->
+    console.log "User::reset_password_with_token called."
+    route = "/users/#{params.id}/reset_password/#{params.reset_token}"
+    config =
+      host: @api.client.options.host
+      path: "#{@api.client.options.path}/#{@api.client.options.api_version}#{route}"
+      method: 'PATCH'
+      port: @api.client.port()
+      headers: @api.client.headers
+      body: JSON.stringify params.data
+
+    @api.client.raw_request(config, @api.handler(callback))
 module.exports = User
