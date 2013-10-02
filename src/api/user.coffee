@@ -66,6 +66,20 @@ class User
       body: JSON.stringify params.data
 
     @api.client.raw_request(config, @api.handler(callback))
+
+  request_new_confirmation_email: (params, callback) ->
+    console.log "User::request_new_confirmation_email called."
+    route = "/users/request_new_confirmation_email"
+    config =
+      host: @api.client.options.host
+      path: "#{@api.client.options.path}/#{@api.client.options.api_version}#{route}"
+      method: 'POST'
+      port: @api.client.port()
+      headers: @api.client.headers
+      body: JSON.stringify params.data
+
+    @api.client.raw_request(config, @api.handler(callback))
+
   reset_password_with_token: (params, callback) ->
     console.log "User::reset_password_with_token called."
     route = "/users/#{params.id}/reset_password/#{params.reset_token}"
@@ -78,4 +92,5 @@ class User
       body: JSON.stringify params.data
 
     @api.client.raw_request(config, @api.handler(callback))
+    
 module.exports = User

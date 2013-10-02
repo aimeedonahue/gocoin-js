@@ -36,7 +36,8 @@
     "should": "*",
     "sinon": "*",
     "grunt": "~0.4.1",
-    "grunt-contrib-coffee": "~0.7.0"
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
   },
   "bugs": {
     "url": "https://github.com/gc-admin/gocoin-js/issues",
