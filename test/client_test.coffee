@@ -78,5 +78,5 @@ describe 'Client', ->
             () ->
               client.api.request '/somewhere', {}, ->
             ).should.throw 'Api not ready: Token was not defined' 
-    
+
 

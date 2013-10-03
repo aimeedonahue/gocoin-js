@@ -9,4 +9,5 @@ Correct versioning (odd numbers for dev releases)
 Corrected prepublish script for npm
 
 ######v0.1.0: 
-Initial release
+Initial release: <br>
+Methods for User, Merchant, and Apps
