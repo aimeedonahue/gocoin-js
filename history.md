@@ -1,7 +1,9 @@
 ###Changelog
 
+######v0.1.4
+public release with invoice methods
+
 ######v0.1.3:
-Work in Progress:
 Add password methods to @api.user <br>
 Correct versioning (odd numbers for dev releases)
 

@@ -17,7 +17,6 @@ class Invoices
     console.log "Invoices::get called."
     route = "/invoices/#{id}"
     options = {}
-
     @api.request(route, options, @api.handler(callback))
 
 module.exports = Invoices
