@@ -1,21 +1,26 @@
 {
   "description": "A JavaScript client library for the GoCoin API.",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "name": "gocoin",
   "author": {
-    "name" : "GoCoin"
+    "name": "GoCoin"
   },
-  "contributors" : [{
-    "name" : "Kevin Beauregard",
-    "email" : "kevin@gocoin.com"
-    }, {
-    "name" : "Ticean Bennett",
-    "email" : "ticean@gocoin.com"
-  }],
-  "licenses" : [{
-    "type" : "Apache License version 2.0",
-    "url" : "https://github.com/gc-admin/gocoin-js/blob/master/LICENSE"
-  }],
+  "contributors": [
+    {
+      "name": "Kevin Beauregard",
+      "email": "kevin@gocoin.com"
+    },
+    {
+      "name": "Ticean Bennett",
+      "email": "ticean@gocoin.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "Apache License version 2.0",
+      "url": "https://github.com/gc-admin/gocoin-js/blob/master/LICENSE"
+    }
+  ],
   "homepage": "http://www.gocoin.com",
   "main": "lib/gocoin",
   "scripts": {
@@ -29,15 +34,17 @@
     "coffee-script": "1.3.3",
     "mocha": "*",
     "should": "*",
-    "sinon":"*"
+    "sinon": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
   },
   "bugs": {
     "url": "https://github.com/gc-admin/gocoin-js/issues",
-    "email":"kevin@gocoin.com"
+    "email": "kevin@gocoin.com"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/gc-admin/gocoin-js.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gc-admin/gocoin-js.git"
   }
-
 }
