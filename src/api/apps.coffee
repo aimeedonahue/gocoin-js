@@ -11,7 +11,7 @@ class Apps
     options = 
       method: 'POST'
       body: params
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   create_code: (params, callback) ->
     console.log "Apps::create_code called."
@@ -19,40 +19,40 @@ class Apps
     options =
       method: 'POST'
       body: params
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   delete: (id, callback) ->
     console.log "Apps::delete called."
     route = "/oauth/applications/#{id}"
     options = 
       method: 'DELETE'
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   delete_authorized: (id, callback) ->
     console.log "Apps::delete_authorized called."
     route = "/oauth/authorized_applications/#{id}"
     options = 
       method: 'DELETE'
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   ### No need for this method yet
   get: (id, callback) ->
     console.log "Apps::get called."
     
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
   ###
 
   list: (callback) ->
     console.log "Apps::list called."
     route = '/oauth/applications';
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   list_authorized: (callback) ->
     console.log "Apps::list_authorized called."
     route = '/oauth/authorized_applications';
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   update: (params, callback) ->
     console.log "Apps::update called."
@@ -60,6 +60,6 @@ class Apps
     options = 
       method: 'PATCH'
       body: params.data
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
 module.exports = Apps

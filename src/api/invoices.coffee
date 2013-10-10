@@ -11,12 +11,12 @@ class Invoices
     options = 
       method: 'POST'
       body: params.data
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   get: (id, callback) ->
     console.log "Invoices::get called."
     route = "/invoices/#{id}"
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
 module.exports = Invoices

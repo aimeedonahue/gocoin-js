@@ -47,7 +47,7 @@ class Client
       callback = options
       options = {}
       
-    @auth.authenticate options, @api.handler(callback)
+    @auth.authenticate options, callback
 
   request_client: (secure=true) ->
     if secure then https else http
@@ -72,10 +72,24 @@ class Client
       config.headers['Content-Length'] = config.body.length
 
     console.log "Making request with config: ", config
-    request = @request_client().request(config, callback)
+    request = @request_client().request config, (response) ->
+      if response.statusCode == 204 or response.statusCode == 302
+        callback null, response
+      else
+        try
+          response_data = ''
+          response.on 'data', (chunk) ->
+            response_data += chunk
+          response.on 'end', () ->
+            data = JSON.parse(response_data);
+            console.log response_data
+            callback null, response, data
+        catch err
+          callback err
+
     request.on 'error', (err) ->
       # log the error
-      callback(err)
+      callback err
     if config.body
       request.write config.body
 
