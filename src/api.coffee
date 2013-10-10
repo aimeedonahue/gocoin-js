@@ -58,6 +58,23 @@ class Api
       headers: headers
       body: body
 
-    @client.raw_request config, callback
+    done = (err, response) ->
+      if err
+        callback err
+      else if response.statusCode == 204 or response.statusCode == 302
+        callback null, response
+      else
+        try
+          response_data = ''
+          response.on 'data', (chunk) ->
+            response_data += chunk
+          response.on 'end', () ->
+            data = JSON.parse(response_data);
+            console.log response_data
+            callback null, response, data
+        catch err
+          callback err
+
+    @client.raw_request config, done
 
 module.exports = Api
