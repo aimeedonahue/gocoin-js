@@ -47,22 +47,7 @@ class Auth
       headers: headers
       body: body
 
-    done = (err, response) ->
-      if err
-        callback err
-      else
-        try
-          response_data = ''
-          response.on 'data', (chunk) ->
-            response_data += chunk
-          response.on 'end', () ->
-            data = JSON.parse(response_data);
-            console.log response_data
-            callback null, response, data
-        catch err
-          callback err
-
-    @client.raw_request config, done
+    @client.raw_request config, callback
 
 
   # Validates that required options are included and returns a body.

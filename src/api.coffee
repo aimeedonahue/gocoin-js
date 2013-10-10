@@ -16,22 +16,6 @@ class Api
     @apps = new Apps(@)
     @invoices = new Invoices(@)
 
-  handler: (callback) ->
-      (
-        (response) -> 
-          console.log "Status: #{response.statusCode}"
-          response_data = ''
-          if response.statusCode != 204 and response.statusCode != 302
-            response.on 'data', (chunk) ->
-              response_data += chunk
-            response.on 'end', () ->
-              data = JSON.parse(response_data);
-              console.log response_data
-              callback(response, data)
-          else
-            callback response
-        )
-
   request: (route, options, callback) ->
     # Do stuff.
     console.log "Api::request called."
@@ -58,23 +42,6 @@ class Api
       headers: headers
       body: body
 
-    done = (err, response) ->
-      if err
-        callback err
-      else if response.statusCode == 204 or response.statusCode == 302
-        callback null, response
-      else
-        try
-          response_data = ''
-          response.on 'data', (chunk) ->
-            response_data += chunk
-          response.on 'end', () ->
-            data = JSON.parse(response_data);
-            console.log response_data
-            callback null, response, data
-        catch err
-          callback err
-
-    @client.raw_request config, done
+    @client.raw_request config, callback
 
 module.exports = Api

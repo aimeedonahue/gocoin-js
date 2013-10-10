@@ -73,8 +73,12 @@ class Client
 
     console.log "Making request with config: ", config
     request = @request_client().request config, (response) ->
-      callback null, response
-      
+      response_data = ''
+      response.on 'data', (chunk) ->
+        response_data += chunk
+      response.on 'end', () ->
+        callback null, response, response_data
+        
     request.on 'error', (err) ->
       # log the error
       callback err
