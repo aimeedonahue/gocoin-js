@@ -10,26 +10,26 @@ class User
     route = '/users';
     options = 
       body: user_data
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   delete: (id, callback) ->
     console.log "User::delete called."
     route = "/users/#{id}"
     options = 
       method: 'DELETE'
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
     
   get: (id, callback) ->
     console.log "User::get called."
     route = "/users/#{id}"
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   list: (callback) ->
     console.log "User::list called."
     route = '/users';
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
     
   update: (params, callback) ->
     console.log "User::update called."
@@ -37,13 +37,13 @@ class User
     options =
       method: 'PATCH'
       body: params.data
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
     
   self: (callback) ->
     console.log "User::self called."
     route = '/user'
     options = {}
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   update_password: (params, callback) ->
     console.log "User::update_password called."
@@ -51,7 +51,7 @@ class User
     options =
       method: 'PATCH'
       body: params.data
-    @api.request(route, options, @api.handler(callback))
+    @api.request(route, options, callback)
 
   #These requests do not require a login (token) and therefore use @client.raw_request
   request_password_reset: (params, callback) ->
@@ -65,7 +65,7 @@ class User
       headers: @api.client.headers
       body: JSON.stringify params.data
 
-    @api.client.raw_request(config, @api.handler(callback))
+    @api.client.raw_request(config, callback)
 
   request_new_confirmation_email: (params, callback) ->
     console.log "User::request_new_confirmation_email called."
@@ -78,7 +78,7 @@ class User
       headers: @api.client.headers
       body: JSON.stringify params.data
 
-    @api.client.raw_request(config, @api.handler(callback))
+    @api.client.raw_request(config, callback)
 
   reset_password_with_token: (params, callback) ->
     console.log "User::reset_password_with_token called."
@@ -91,6 +91,6 @@ class User
       headers: @api.client.headers
       body: JSON.stringify params.data
 
-    @api.client.raw_request(config, @api.handler(callback))
+    @api.client.raw_request(config, callback)
     
 module.exports = User

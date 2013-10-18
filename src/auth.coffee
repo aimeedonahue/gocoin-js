@@ -47,7 +47,7 @@ class Auth
       headers: headers
       body: body
 
-    @client.raw_request(config, callback)
+    @client.raw_request config, callback
 
 
   # Validates that required options are included and returns a body.
