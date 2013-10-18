@@ -42,9 +42,9 @@ class Apps
     @api.request(route, options, callback)
   ###
 
-  list: (callback) ->
+  list: (id, callback) ->
     console.log "Apps::list called."
-    route = '/oauth/applications';
+    route = "/users/#{id}/applications";
     options = {}
     @api.request(route, options, callback)
 
