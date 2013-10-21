@@ -34,6 +34,7 @@ class Client
     @merchant = @api.merchant
     @apps = @api.apps
     @invoices = @api.invoices
+    @accounts = @api.accounts
 
   set_token: (@token) ->
   get_token: () ->
