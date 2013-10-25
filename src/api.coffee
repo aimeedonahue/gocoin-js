@@ -1,9 +1,10 @@
-_ = require 'underscore'
+_           = require 'underscore'
 
-Merchant = require './api/merchant'
-User     = require './api/user'
-Apps      = require './api/apps'
-Invoices      = require './api/invoices'
+Merchant    = require './api/merchant'
+User        = require './api/user'
+Apps        = require './api/apps'
+Invoices    = require './api/invoices'
+Accounts    = require './api/accounts'
 
 # The API interface for working with GoCoin resources.
 #
@@ -15,6 +16,7 @@ class Api
     @merchant = new Merchant(@)
     @apps = new Apps(@)
     @invoices = new Invoices(@)
+    @accounts = new Accounts(@)
 
   request: (route, options, callback) ->
     # Do stuff.
