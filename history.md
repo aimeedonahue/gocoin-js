@@ -1,5 +1,8 @@
 ###Changelog
 
+###### v0.1.8
+public release of account methods
+
 ###### v0.1.7
 Added accounts methods
 
