@@ -1,9 +1,15 @@
 ###Changelog
 
-###### v0.1.5
-in progress
+###### v0.1.7
+Added accounts methods
 
-###### v0.1.4
+###### v0.1.6:
+public release of callback change
+
+###### v0.1.5:
+Altered callback structure to format (err, body)
+
+###### v0.1.4:
 public release with invoice methods
 
 ###### v0.1.3:

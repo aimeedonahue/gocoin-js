@@ -100,9 +100,13 @@ class Client
       error = 
         message: json_body
         status: response.statusCode
+        url: response.originalUrl
+
     catch e
       error =
         status: response.statusCode
+        url: response.originalUrl
+        
     callback error
 
 
