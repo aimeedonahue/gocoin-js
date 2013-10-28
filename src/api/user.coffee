@@ -3,36 +3,35 @@
 class User
 
   constructor: (@api) ->
-    console.log "User::constructor called."
 
   create: (params, callback) ->
-    console.log "User::create called."
+    @api.client.logger.debug "User::create called."
     route = '/users';
     options = 
       body: user_data
     @api.request(route, options, callback)
 
   delete: (id, callback) ->
-    console.log "User::delete called."
+    @api.client.logger.debug "User::delete called."
     route = "/users/#{id}"
     options = 
       method: 'DELETE'
     @api.request(route, options, callback)
     
   get: (id, callback) ->
-    console.log "User::get called."
+    @api.client.logger.debug "User::get called."
     route = "/users/#{id}"
     options = {}
     @api.request(route, options, callback)
 
   list: (callback) ->
-    console.log "User::list called."
+    @api.client.logger.debug "User::list called."
     route = '/users';
     options = {}
     @api.request(route, options, callback)
     
   update: (params, callback) ->
-    console.log "User::update called."
+    @api.client.logger.debug "User::update called."
     route = "/users/#{params.id}/password"
     options =
       method: 'PATCH'
@@ -40,13 +39,13 @@ class User
     @api.request(route, options, callback)
     
   self: (callback) ->
-    console.log "User::self called."
+    @api.client.logger.debug "User::self called."
     route = '/user'
     options = {}
     @api.request(route, options, callback)
 
   update_password: (params, callback) ->
-    console.log "User::update_password called."
+    @api.client.logger.debug "User::update_password called."
     route = "/users/#{params.id}/password"
     options =
       method: 'PATCH'
@@ -55,7 +54,7 @@ class User
 
   #These requests do not require a login (token) and therefore use @client.raw_request
   request_password_reset: (params, callback) ->
-    console.log "User::request_password_reset called."
+    @api.client.logger.debug "User::request_password_reset called."
     route = "/users/request_password_reset"
     config =
       host: @api.client.options.host
@@ -68,7 +67,7 @@ class User
     @api.client.raw_request(config, callback)
 
   request_new_confirmation_email: (params, callback) ->
-    console.log "User::request_new_confirmation_email called."
+    @api.client.logger.debug "User::request_new_confirmation_email called."
     route = "/users/request_new_confirmation_email"
     config =
       host: @api.client.options.host
@@ -81,7 +80,7 @@ class User
     @api.client.raw_request(config, callback)
 
   reset_password_with_token: (params, callback) ->
-    console.log "User::reset_password_with_token called."
+    @api.client.logger.debug "User::reset_password_with_token called."
     route = "/users/#{params.id}/reset_password/#{params.reset_token}"
     config =
       host: @api.client.options.host

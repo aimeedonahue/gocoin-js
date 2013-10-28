@@ -5,7 +5,6 @@ _ = require 'underscore'
 class Auth
 
   constructor: (@client) ->
-    console.log "Auth constructor called."
 
   required_password_params: ['grant_type', 'client_id', 'client_secret',
                               'username', 'password', 'scope']
@@ -22,7 +21,7 @@ class Auth
   #   scope
   #
   authenticate: (options, callback) ->
-    console.log "Auth::authenticate called."
+    @client.logger.debug "Auth::authenticate called."
     if _.isFunction(options)
       callback = options
       options = {}
@@ -35,7 +34,7 @@ class Auth
       when 'authorization_code' then @required_code_params
       else throw new Error 'Authenticate: grant_type was not defined properly'
 
-    console.log "Required params: #{required}"
+    @client.logger.debug "Required params: #{required}"
     body = JSON.stringify @build_body(options, required)
 
     #Configure Request

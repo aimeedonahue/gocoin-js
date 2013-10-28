@@ -11,7 +11,6 @@ Accounts    = require './api/accounts'
 class Api
 
   constructor: (@client) ->
-    console.log "Api::constructor called."
     @user = new User(@)
     @merchant = new Merchant(@)
     @apps = new Apps(@)
@@ -20,7 +19,7 @@ class Api
 
   request: (route, options, callback) ->
     # Do stuff.
-    console.log "Api::request called."
+    @client.logger.debug "Api::request called."
     throw new Error 'Api Request: Route was not defined' unless route? && _.isString(route)
     if _.isFunction(options)
       callback = options

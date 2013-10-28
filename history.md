@@ -1,5 +1,8 @@
 ###Changelog
 
+###### v0.1.9
+update api url for production
+
 ###### v0.1.8
 public release of account methods
 
