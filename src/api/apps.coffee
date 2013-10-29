@@ -34,12 +34,11 @@ class Apps
       method: 'DELETE'
     @api.request(route, options, callback)
 
-  ### No need for this method yet
   get: (id, callback) ->
     @api.client.logger.debug "Apps::get called."
-    
+    route = "/oauth/applications/#{id}"
+    options = {}
     @api.request(route, options, callback)
-  ###
 
   list: (id, callback) ->
     @api.client.logger.debug "Apps::list called."
@@ -59,6 +58,13 @@ class Apps
     options = 
       method: 'PATCH'
       body: params.data
+    @api.request(route, options, callback)
+
+  new_secret: (id, callback) ->
+    @api.client.logger.debug "Apps::new_secret called."
+    route = "/oauth/applications/#{id}/request_new_secret"
+    options = 
+      method: 'POST'
     @api.request(route, options, callback)
 
 module.exports = Apps

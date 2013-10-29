@@ -26,7 +26,7 @@ class Accounts
       body: params.data
     @api.request(route, options, callback)
 
-  list: (callback) ->
+  list: (id, callback) ->
     @api.client.logger.debug "Accounts::list called."
     route = "/merchants/#{id}/accounts"
     options = {}

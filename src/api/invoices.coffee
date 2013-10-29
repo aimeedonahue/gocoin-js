@@ -1,5 +1,8 @@
 # GoCoin Invoices
 #
+_           = require 'underscore'
+querystring = require 'querystring'
+
 class Invoices
 
   constructor: (@api) ->
@@ -15,6 +18,13 @@ class Invoices
   get: (id, callback) ->
     @api.client.logger.debug "Invoices::get called."
     route = "/invoices/#{id}"
+    options = {}
+    @api.request(route, options, callback)
+
+  search: (params, callback) ->
+    @api.client.logger.debug "Invoices::search called"
+    params = querystring.stringify params
+    route = "/invoices/search?#{params}"
     options = {}
     @api.request(route, options, callback)
 
