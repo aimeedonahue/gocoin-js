@@ -20,7 +20,7 @@ class Auth
   #   password
   #   scope
   #
-  authenticate: (options, callback) ->
+  authenticate: (options, callback) =>
     @client.logger.debug "Auth::authenticate called."
     if _.isFunction(options)
       callback = options
