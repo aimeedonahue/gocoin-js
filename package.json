@@ -1,6 +1,6 @@
 {
   "description": "A JavaScript client library for the GoCoin API.",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "name": "gocoin",
   "author": {
     "name": "GoCoin"
@@ -28,7 +28,9 @@
     "prepublish": "coffee -c -o lib src"
   },
   "dependencies": {
-    "underscore": "1.4.4"
+    "underscore": "1.4.4",
+    "winston": "0.7.2",
+    "querystring": ">=0.2.x"
   },
   "devDependencies": {
     "coffee-script": "1.3.3",

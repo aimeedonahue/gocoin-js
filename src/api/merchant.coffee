@@ -3,10 +3,9 @@
 class Merchant
 
   constructor: (@api) ->
-    console.log "Merchant::constructor called."
 
   create: (params, callback) ->
-    console.log "Merchant::create called."
+    @api.client.logger.debug "Merchant::create called."
     route = '/merchants'
     options = 
       method: 'POST'
@@ -14,26 +13,26 @@ class Merchant
     @api.request(route, options, callback)
 
   delete: (id, callback) ->
-    console.log "Merchant::delete called."
+    @api.client.logger.debug "Merchant::delete called."
     route = "/merchants/#{id}"
     options = 
       method: 'DELETE'
     @api.request(route, options, callback)
 
   get: (id, callback) ->
-    console.log "Merchant::get called."
+    @api.client.logger.debug "Merchant::get called."
     route = "/merchants/#{id}"
     options = {}
     @api.request(route, options, callback)
 
   list: (callback) ->
-    console.log "Merchant::list called."
+    @api.client.logger.debug "Merchant::list called."
     route = '/merchants'
     options = {}
     @api.request(route, options, callback)
 
   update: (params, callback) ->
-    console.log "Merchant::update called."
+    @api.client.logger.debug "Merchant::update called."
     route = "/merchants/#{params.id}"
     options = 
       method: 'PATCH'

@@ -1,6 +1,8 @@
-_ = require 'underscore'
-http = require 'http'
-https = require 'https'
+require './log'
+_        = require 'underscore'
+http     = require 'http'
+https    = require 'https'
+winston  = require 'winston'
 
 Api  = require './api'
 Auth = require './auth'
@@ -10,24 +12,27 @@ Auth = require './auth'
 class Client
 
   defaults:
+    logger: winston.loggers.get 'gocoin-js'
     client_id: null
     client_secret: null
-    host: 'gocoin-api.herokuapp.com'
+    host: 'api.gocoin.com'
     port: null
     path: '/api'
     api_version: 'v1'
     secure: true
     method: 'GET'
+    headers: null
+    request_id: null
 
   default_headers:
     'Content-Type': 'application/json'
 
   constructor: (options={}) ->
-    console.log "Client::constructor called."
     @options = _.defaults options, @defaults
+    @logger = @options.logger
     @headers = if options.headers? then options.headers else _.defaults {}, @default_headers
-    console.log "Using options: #{@options}"
-
+    if @options.request_id? then @headers['X-Request-Id'] = @options.request_id
+    
     @auth = new Auth(@)
     @api = new Api(@)
     @user = @api.user
@@ -43,7 +48,7 @@ class Client
   # obtains an access token.
   #
   authenticate: (options, callback) ->
-    console.log "Client::authenticate called."
+    @logger.debug "Client::authenticate called."
     if _.isFunction(options)
       callback = options
       options = {}
@@ -61,19 +66,28 @@ class Client
     else
       80
 
+  strip_secure_from_raw: (obj) ->
+    strippable = ['client_secret', 'password']
+    if obj.body?
+      obj.body = JSON.parse obj.body
+      _.each strippable, (k) ->
+        if obj.body[k]? then obj.body[k] = "<#{k}>"
+    if obj.headers.Authorization? then obj.headers.Authorization = '<bearer>'
+    return obj
+
   # Make an HTTP request to the API.
   # Config contains: host, path, port, method, headers, and body.
   #
   raw_request: (config, callback) ->
-
-    console.log "Raw request logged."
-
     # Add content length.
     if config.body
       config.headers['Content-Length'] = config.body.length
 
-    console.log "Making request with config: ", config
-    request = @request_client().request config, (response) =>
+    log_config = _.clone config
+    log_config.headers = _.clone config.headers
+    @logger.debug "Raw request made", @strip_secure_from_raw(log_config)
+
+    request = @request_client(@options.secure).request config, (response) =>
       response_data = ''
       response.on 'data', (chunk) ->
         response_data += chunk
