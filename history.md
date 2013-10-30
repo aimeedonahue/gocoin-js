@@ -1,5 +1,8 @@
 ###Changelog
 
+###### v0.1.10
+Public release of 0.1.9
+
 ###### v0.1.9
 Update api url for production
 Correct accounts::list to require a merchant_id(id)
