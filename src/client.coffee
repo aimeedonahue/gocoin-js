@@ -87,7 +87,7 @@ class Client
     log_config.headers = _.clone config.headers
     @logger.debug "Raw request made", @strip_secure_from_raw(log_config)
 
-    request = @request_client().request config, (response) =>
+    request = @request_client(@options.secure).request config, (response) =>
       response_data = ''
       response.on 'data', (chunk) ->
         response_data += chunk
