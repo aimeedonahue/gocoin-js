@@ -46,9 +46,9 @@ class Apps
     options = {}
     @api.request(route, options, callback)
 
-  list_authorized: (callback) ->
+  list_authorized: (id, callback) ->
     @api.client.logger.debug "Apps::list_authorized called."
-    route = '/oauth/authorized_applications';
+    route = "/users/#{id}/authorized_applications";
     options = {}
     @api.request(route, options, callback)
 
