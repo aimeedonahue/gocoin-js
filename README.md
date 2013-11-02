@@ -34,6 +34,10 @@ client.authenticate({options}, function (response, data) {
 ##### user.delete(id, callback)
 ##### user.get(id, callback)
 ##### user.update(params, callback)
+##### user.update_password(params, callback)
+##### user.request_password_reset(params, callback)
+##### user.new_confirmation_email(params, callback)
+##### user.reset_password_with_token(params, callback)
 
 
 ### Merchants
@@ -54,6 +58,31 @@ client.authenticate({options}, function (response, data) {
 ##### apps.list(callback)
 ##### apps.list_authorized(callback)
 ##### apps.update(params, callback)
+
+
+### Accounts
+
+##### apps.list(id, callback)
+
+
+### Invoices
+
+##### invoices.create(params, callback)
+##### invoices.get(id, callback)
+##### invoices.search(params, callback)
+
+
+### Apps
+
+##### apps.create(params, callback)
+##### apps.create_code(params, callback)
+##### apps.delete(id, callback)
+##### apps.delete_authorized(id, callback)
+##### apps.get(id, callback)
+##### apps.list(id, callback)
+##### apps.list_authorized(id, callback)
+##### apps.update(params, callback)
+##### apps.new_secret(id, callback)
 
 
 ### License
