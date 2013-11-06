@@ -32,7 +32,7 @@ class User
     
   update: (params, callback) ->
     @api.client.logger.debug "User::update called."
-    route = "/users/#{params.id}/password"
+    route = "/users/#{params.id}"
     options =
       method: 'PATCH'
       body: params.data

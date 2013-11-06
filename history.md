@@ -1,10 +1,13 @@
 ###Changelog
 
+###### v0.1.14
+Public release: Minor update to user update route
+
 ###### v0.1.12
 Public release of v0.1.11
 
 ###### v0.1.11
-Update to apps::list_authorizes route
+Update to apps::list_authorized route
 
 ###### v0.1.10
 Public release of 0.1.9
