@@ -39,7 +39,7 @@ class Api
       host: options.host
       path: "#{options.path}/#{options.api_version}#{route}"
       method: options.method
-      port: @client.port()
+      port: @client.port(options.secure)
       headers: headers
       body: body
 

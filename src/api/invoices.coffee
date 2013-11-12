@@ -28,4 +28,12 @@ class Invoices
     options = {}
     @api.request(route, options, callback)
 
+  update: (params, callback) ->
+    @api.client.logger.debug "Invoices::get called."
+    route = "/invoices/#{params.id}"
+    options = 
+      method: 'PATCH'
+      body: params.data
+    @api.request(route, options, callback)
+
 module.exports = Invoices

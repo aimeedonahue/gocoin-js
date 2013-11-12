@@ -42,7 +42,7 @@ class Auth
       host: options.host
       path: "#{options.path}/#{options.api_version}/oauth/token"
       method: "POST"
-      port: @client.port()
+      port: @client.port(options.secure)
       headers: headers
       body: body
 
