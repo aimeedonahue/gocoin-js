@@ -1,6 +1,6 @@
 ###Changelog
 
-###### v0.1.14
+###### v0.1.16
 Public release: insecure requests default to port 80 rather than being set manually
 
 ###### v0.1.14
