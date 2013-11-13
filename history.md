@@ -1,5 +1,8 @@
 ###Changelog
 
+###### v0.1.18
+Public release: options.secure = "false" results in options.secure = false (bool)
+
 ###### v0.1.16
 Public release: insecure requests default to port 80 rather than being set manually
 

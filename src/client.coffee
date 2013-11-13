@@ -41,6 +41,9 @@ class Client
     @invoices = @api.invoices
     @accounts = @api.accounts
 
+    if @options.secure == "false" 
+      @options.secure = false
+
   set_token: (@token) ->
   get_token: () ->
     @token 
