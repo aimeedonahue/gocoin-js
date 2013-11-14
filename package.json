@@ -1,6 +1,6 @@
 {
   "description": "A JavaScript client library for the GoCoin API.",
-  "version": "0.1.18",
+  "version": "0.2.0",
   "name": "gocoin",
   "author": {
     "name": "GoCoin"
@@ -18,7 +18,7 @@
   "licenses": [
     {
       "type": "Apache License version 2.0",
-      "url": "https://github.com/gc-admin/gocoin-js/blob/master/LICENSE"
+      "url": "https://github.com/GoCoin/gocoin-js/blob/master/LICENSE"
     }
   ],
   "homepage": "http://www.gocoin.com",
@@ -42,11 +42,11 @@
     "grunt-contrib-watch": "~0.5.3"
   },
   "bugs": {
-    "url": "https://github.com/gc-admin/gocoin-js/issues",
+    "url": "https://github.com/GoCoin/gocoin-js/issues",
     "email": "kevin@gocoin.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gc-admin/gocoin-js.git"
+    "url": "https://github.com/GoCoin/gocoin-js.git"
   }
 }

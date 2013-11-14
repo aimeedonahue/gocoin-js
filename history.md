@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.2.0
+Public Release: Breaking Change - repository location
+
 ###### v0.1.18
 Public release: options.secure = "false" results in options.secure = false (bool)
 
@@ -47,6 +50,6 @@ Correct versioning (odd numbers for dev releases)
 ###### v0.1.1:
 Corrected prepublish script for npm
 
-###### v0.1.0: 
+#### v0.1.0: 
 Initial release: <br>
 Methods for User, Merchant, and Apps
