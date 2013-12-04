@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.2.5
+Add apps::get_by_uid route
+
 #### v0.2.3
 Add MerchantUsers class
 
