@@ -1,5 +1,11 @@
 ###Changelog
 
+#### v0.2.3
+Add MerchantUsers class
+
+#### v0.2.2
+Public Release: Same as v0.2.0 - repush due to npm error
+
 #### v0.2.0
 Public Release: Breaking Change - repository location
 
