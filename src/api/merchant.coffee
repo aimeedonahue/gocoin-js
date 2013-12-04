@@ -9,7 +9,7 @@ class Merchant
     route = '/merchants'
     options = 
       method: 'POST'
-      body: params
+      body: params.data
     @api.request(route, options, callback)
 
   delete: (id, callback) ->

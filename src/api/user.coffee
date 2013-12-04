@@ -7,8 +7,9 @@ class User
   create: (params, callback) ->
     @api.client.logger.debug "User::create called."
     route = '/users';
-    options = 
-      body: user_data
+    options =
+      method: 'POST'
+      body: params.data
     @api.request(route, options, callback)
 
   delete: (id, callback) ->
