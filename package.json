@@ -1,6 +1,6 @@
 {
   "description": "A JavaScript client library for the GoCoin API.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "name": "gocoin",
   "author": {
     "name": "GoCoin"
@@ -9,6 +9,10 @@
     {
       "name": "Kevin Beauregard",
       "email": "kevin@gocoin.com"
+    },
+    {
+      "name": "Smith Long",
+      "email": "smith@gocoin.com"
     },
     {
       "name": "Ticean Bennett",

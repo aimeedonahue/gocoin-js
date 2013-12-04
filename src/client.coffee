@@ -37,6 +37,7 @@ class Client
     @api = new Api(@)
     @user = @api.user
     @merchant = @api.merchant
+    @merchantusers = @api.merchantusers
     @apps = @api.apps
     @invoices = @api.invoices
     @accounts = @api.accounts
