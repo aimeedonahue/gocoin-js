@@ -46,6 +46,10 @@ describe 'Client', ->
                 redirect_uri: "someuri"
               client.auth.authenticate {}, ->
             ).should.throw "Authenticate requires 'code' option."
+      describe 'construct_code_url', ->
+        it "should create and return an authorization_code url", () ->
+          url = client.auth.construct_code_url { param: 'param' }
+          url.should.equal 'https://dashboard.gocoin.com/auth?param=param'
 
     describe 'api', ->
       describe 'request', ->

@@ -67,4 +67,16 @@ class Apps
       method: 'POST'
     @api.request(route, options, callback)
 
+  get_by_uid: (uid, callback) ->
+    @api.client.logger.debug "Apps::get_by_uid called."
+    route = "/oauth/applications/uid/#{uid}"
+    config =
+      host: @api.client.options.host
+      path: "#{@api.client.options.path}/#{@api.client.options.api_version}#{route}"
+      method: 'GET'
+      port: @api.client.port()
+      headers: @api.client.headers
+
+    @api.client.raw_request(config, callback)
+
 module.exports = Apps

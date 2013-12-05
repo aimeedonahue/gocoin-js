@@ -1,6 +1,6 @@
 {
   "description": "A JavaScript client library for the GoCoin API.",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "name": "gocoin",
   "author": {
     "name": "GoCoin"
