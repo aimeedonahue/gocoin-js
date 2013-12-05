@@ -23,6 +23,7 @@ class Client
     method: 'GET'
     headers: null
     request_id: null
+    dash_url: "dashboard.gocoin.com"
 
   default_headers:
     'Content-Type': 'application/json'

@@ -1,4 +1,5 @@
 _ = require 'underscore'
+querystring  = require 'querystring'
 
 # Provides authorization capabilities.
 #
@@ -57,6 +58,19 @@ class Auth
       m[k] = options[k]
       return m
     ), {}
+
+  construct_code_url: (params) ->
+    ###
+    example params object
+    params = 
+      response_type: 'code'
+      client_id: CLIENT_ID
+      redirect_uri: REDIRECT_URL
+      scope: SCOPE
+      state: STATE (optional)
+    ###
+    safe_params = querystring.stringify params
+    route = "https://#{@client.options.dash_url}/auth?#{safe_params}" 
 
 
 module.exports = Auth
