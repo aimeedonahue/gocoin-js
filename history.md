@@ -1,5 +1,11 @@
 ###Changelog
 
+#### v0.2.8
+Public release of v0.2.7
+
+#### v0.2.7
+add Xrate class - pull xrate from x.g0cn.com
+
 #### v0.2.6
 Public release of v0.2.5
 
