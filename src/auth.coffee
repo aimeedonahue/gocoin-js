@@ -70,7 +70,7 @@ class Auth
       state: STATE (optional)
     ###
     safe_params = querystring.stringify params
-    route = "https://#{@client.options.dash_url}/auth?#{safe_params}" 
+    route = "https://#{@client.options.dash_host}/auth?#{safe_params}" 
 
 
 module.exports = Auth
