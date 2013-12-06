@@ -6,6 +6,7 @@ winston  = require 'winston'
 
 Api  = require './api'
 Auth = require './auth'
+Xrate = require './xrate'
 
 # A JavaScript API client for the GoCoin API.
 #
@@ -23,7 +24,8 @@ class Client
     method: 'GET'
     headers: null
     request_id: null
-    dash_url: "dashboard.gocoin.com"
+    dash_host: "dashboard.gocoin.com"
+    xrate_host: "x.g0cn.com"
 
   default_headers:
     'Content-Type': 'application/json'
@@ -36,6 +38,8 @@ class Client
     
     @auth = new Auth(@)
     @api = new Api(@)
+    @xrate = new Xrate(@options)
+
     @user = @api.user
     @merchant = @api.merchant
     @merchantusers = @api.merchantusers
