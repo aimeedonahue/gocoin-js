@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.2.10
+Public release for forcing https in xrate class
+
 #### v0.2.8
 Public release of v0.2.7
 

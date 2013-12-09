@@ -1,7 +1,7 @@
 # GoCoin Xrate
 #
 _    = require 'underscore'
-http = require 'http'
+https = require 'https'
 
 class Xrate
 
@@ -15,12 +15,12 @@ class Xrate
       host: @options.xrate_host
       path: "/prices"
       method: 'GET'
-      port: 80
+      port: 443
     @simple_raw_request config, callback
 
   simple_raw_request: (config, callback) ->
     @options.logger.debug "Raw request made", (config) if @options.logger
-    request = http.request config, (response) =>
+    request = https.request config, (response) =>
       response_data = ''
       response.on 'data', (chunk) ->
         response_data += chunk

@@ -24,6 +24,13 @@ client.authenticate({options}, function (response, data) {
   });
 ```
 
+##Xrate
+```coffee
+gocoin = new GoCoin.Client()
+gocoin.xrate.get (err, resp) ->
+  xrate = resp
+```
+
 ## Methods
 
 ### Users
