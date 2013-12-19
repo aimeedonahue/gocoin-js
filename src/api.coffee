@@ -2,6 +2,7 @@ _           = require 'underscore'
 
 Merchant    = require './api/merchant'
 Merchantusers    = require './api/merchantusers'
+Merchantpayoutaddresses    = require './api/merchantpayoutaddresses'
 User        = require './api/user'
 Apps        = require './api/apps'
 Invoices    = require './api/invoices'
@@ -15,6 +16,7 @@ class Api
     @user = new User(@)
     @merchant = new Merchant(@)
     @merchantusers = new Merchantusers(@)
+    @merchantpayoutaddresses = new Merchantpayoutaddresses(@)
     @apps = new Apps(@)
     @invoices = new Invoices(@)
     @accounts = new Accounts(@)
