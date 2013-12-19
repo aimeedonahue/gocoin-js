@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.2.14
+Public release with refactored route to update merchantpayoutaddresses
+
 #### v0.2.12
 Public release of v0.2.11
 
