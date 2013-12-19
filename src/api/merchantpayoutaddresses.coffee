@@ -9,7 +9,7 @@ class Merchantpayoutaddresses
     route = "/merchants/#{params.mid}/payout_addresses"
     options =
       method: 'POST'
-      body: params
+      body: params.data
     @api.request(route, options, callback)
 
   get: (params, callback) ->
@@ -29,7 +29,7 @@ class Merchantpayoutaddresses
     route = "/merchants/#{params.mid}/payout_addresses/set_active"
     options =
       method: 'PATCH'
-      body: params
+      body: params.data
     @api.request(route, options, callback)
 
 
