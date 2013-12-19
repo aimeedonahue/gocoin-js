@@ -1,5 +1,11 @@
 ###Changelog
 
+#### v0.2.12
+Public release of v0.2.11
+
+#### v0.2.11
+Add Merchantpayoutaddresses class
+
 #### v0.2.10
 Public release for forcing https in xrate class
 
