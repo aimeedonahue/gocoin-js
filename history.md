@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.2.16
+Same as v0.2.14 - repairs deployment error
+
 #### v0.2.14
 Public release with refactored route to update merchantpayoutaddresses
 
