@@ -36,20 +36,22 @@ class Client
     @headers = if options.headers? then options.headers else _.defaults {}, @default_headers
     if @options.request_id? then @headers['X-Request-Id'] = @options.request_id
     
+    if @options.secure == "false" 
+      @options.secure = false
+
     @auth = new Auth(@)
-    @api = new Api(@)
     @xrate = new Xrate(@options)
+
+    @add_extensions()
+
+  add_extensions: () ->
+    @api = new Api(@)
 
     @user = @api.user
     @merchant = @api.merchant
-    @merchantusers = @api.merchantusers
-    @merchantpayoutaddresses = @api.merchantpayoutaddresses
-    @apps = @api.apps
     @invoices = @api.invoices
     @accounts = @api.accounts
-
-    if @options.secure == "false" 
-      @options.secure = false
+    @merchantpayoutaddresses = @api.merchantpayoutaddresses
 
   set_token: (@token) ->
   get_token: () ->

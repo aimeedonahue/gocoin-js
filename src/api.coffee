@@ -1,10 +1,8 @@
 _           = require 'underscore'
 
 Merchant    = require './api/merchant'
-Merchantusers    = require './api/merchantusers'
-Merchantpayoutaddresses    = require './api/merchantpayoutaddresses'
+PayoutAddrs = require './api/merchantpayoutaddresses'
 User        = require './api/user'
-Apps        = require './api/apps'
 Invoices    = require './api/invoices'
 Accounts    = require './api/accounts'
 
@@ -15,11 +13,10 @@ class Api
   constructor: (@client) ->
     @user = new User(@)
     @merchant = new Merchant(@)
-    @merchantusers = new Merchantusers(@)
-    @merchantpayoutaddresses = new Merchantpayoutaddresses(@)
-    @apps = new Apps(@)
     @invoices = new Invoices(@)
     @accounts = new Accounts(@)
+    @merchantpayoutaddresses = new PayoutAddrs(@)
+    @add_extensions()
 
   request: (route, options, callback) ->
     # Do stuff.
@@ -48,5 +45,9 @@ class Api
       body: body
 
     @client.raw_request config, callback
+
+  add_extensions: () ->
+    # This method is essentially a secondary constructor
+    @client.logger.debug 'No extensions to add'
 
 module.exports = Api
