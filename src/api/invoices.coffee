@@ -36,4 +36,13 @@ class Invoices
       body: params.data
     @api.request(route, options, callback)
 
+  #this method sends test webhooks
+  webhook: (params, callback) ->
+    @api.client.logger.debug "Invoices::webhook called."
+    route = "/invoices/#{params.id}/test_callback"
+    options = 
+      method: 'POST'
+      body: params.data
+    @api.request(route, options, callback)
+
 module.exports = Invoices

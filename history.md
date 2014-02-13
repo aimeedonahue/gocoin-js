@@ -1,5 +1,11 @@
 ###Changelog
 
+#### v0.3.2
+Adds Invoice::Webhook for testing callback urls
+
+#### v0.3.0
+Strip out methods into admin module
+
 #### v0.2.16
 Same as v0.2.14 - repairs deployment error
 
