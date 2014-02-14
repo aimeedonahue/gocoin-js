@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.3.4
+Adds Currency Conversion and Payout Classes
+
 #### v0.3.2
 Adds Invoice::Webhook for testing callback urls
 
