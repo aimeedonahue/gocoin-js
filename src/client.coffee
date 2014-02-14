@@ -52,6 +52,8 @@ class Client
     @invoices = @api.invoices
     @accounts = @api.accounts
     @merchantpayoutaddresses = @api.merchantpayoutaddresses
+    @currency_conversions = @api.currency_conversions
+    @payouts = @api.payouts
 
   set_token: (@token) ->
   get_token: () ->
