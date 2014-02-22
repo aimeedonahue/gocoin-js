@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.3.6
+Updates merchant splits routes to merchant/:id/currencies
+
 #### v0.3.4
 Adds Currency Conversion and Payout Classes
 

@@ -20,13 +20,13 @@ class Merchant
 
   getSplit: (params, callback) ->
     @api.client.logger.debug "Merchant::getSplit called."
-    route = "/merchants/#{params.merchant_id}/merchant_splits/#{params.currency_code}"
+    route = "/merchants/#{params.merchant_id}/currencies/#{params.currency_code}"
     options = {}
     @api.request(route, options, callback)
 
   setSplit: (params, callback) ->
     @api.client.logger.debug "Merchant::setSplit called."
-    route = "/merchants/#{params.merchant_id}/merchant_splits/#{params.currency_code}"
+    route = "/merchants/#{params.merchant_id}/currencies/#{params.currency_code}"
     options =
       method: 'PATCH'
       body: params.data
