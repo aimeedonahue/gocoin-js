@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.3.8
+Adds Accounts::get_transactions
+
 #### v0.3.6
 Updates merchant splits routes to merchant/:id/currencies
 
