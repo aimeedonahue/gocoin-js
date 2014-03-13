@@ -1,5 +1,8 @@
 ###Changelog
 
+#### v0.3.10
+Removes MerchantPayoutAddresses
+
 #### v0.3.8
 Adds Accounts::get_transactions
 

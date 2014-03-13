@@ -17,7 +17,6 @@ class Api
     @merchant = new Merchant(@)
     @invoices = new Invoices(@)
     @accounts = new Accounts(@)
-    @merchantpayoutaddresses = new PayoutAddrs(@)
     @currency_conversions = new CurrConvers(@)
     @payouts = new Payouts(@)
     @add_extensions()
