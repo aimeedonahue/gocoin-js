@@ -51,7 +51,6 @@ class Client
     @merchant = @api.merchant
     @invoices = @api.invoices
     @accounts = @api.accounts
-    @merchantpayoutaddresses = @api.merchantpayoutaddresses
     @currency_conversions = @api.currency_conversions
     @payouts = @api.payouts
 
