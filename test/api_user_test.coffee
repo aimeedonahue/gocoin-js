@@ -49,16 +49,16 @@ describe 'user', ->
         stub = sinon.stub(client, "raw_request")
         () ->
           client.set_token('sometokenstring')
-          client.user.self ->
+          client.user.self () ->
 
           request_config = stub.args[0][0]
           request_callback = stub.args[0][1]
 
-          request_config.should.be.a 'object'
-          request_callback.should.be.a 'function'
+          request_config.should.be.an.instanceOf(Object)
+          request_callback.should.be.an.instanceOf(Function)
 
 
           validate_method stub.args[0][0]
           validate_headers stub.args[0][0]
 
-        )()
+        ).should.not.throw()
