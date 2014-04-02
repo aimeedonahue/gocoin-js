@@ -1,11 +1,9 @@
 _           = require 'underscore'
 
 Merchant    = require './api/merchant'
-PayoutAddrs = require './api/merchantpayoutaddresses'
 User        = require './api/user'
 Invoices    = require './api/invoices'
 Accounts    = require './api/accounts'
-CurrConvers = require './api/currency_conversions'
 Payouts     = require './api/payouts'
 
 # The API interface for working with GoCoin resources.
@@ -17,7 +15,6 @@ class Api
     @merchant = new Merchant(@)
     @invoices = new Invoices(@)
     @accounts = new Accounts(@)
-    @currency_conversions = new CurrConvers(@)
     @payouts = new Payouts(@)
     @add_extensions()
 

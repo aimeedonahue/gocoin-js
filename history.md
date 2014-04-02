@@ -1,5 +1,9 @@
 ###Changelog
 
+#### v0.3.12
+Fix bug in Api.js
+Deprecate currency conversions class
+
 #### v0.3.10
 Removes MerchantPayoutAddresses
 
