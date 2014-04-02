@@ -15,7 +15,7 @@ describe 'invoices', ->
     scope: "user_read"
 
     it "should contain create", ->
-      client.invoices.create.should.be.a 'function'
+      client.invoices.should.have.property('create')
 
     it "should contain get", ->
-      client.invoices.get.should.be.a 'function'
+      client.invoices.should.have.property('get')
